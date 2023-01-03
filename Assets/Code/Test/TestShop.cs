@@ -1,6 +1,7 @@
 ﻿using Assets.Code.Shop;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Code.Test
 {
@@ -10,20 +11,21 @@ namespace Assets.Code.Test
         public static bool isDestroyGameObj = true;
         public static int CountSpawnElement;
 
-        public TextMeshProUGUI InputValueSpawn;
+        public TMP_InputField InputValueSpawn;
+        public Toggle ToggleElement;
         
 
         [ContextMenu("CreateElement")]
         public void CreateElement()
         {
-            Shop.Create();
+            Shop.GetServerData();
         }
 
         [ContextMenu("CreateElement")]
         public void StartCountSpawnElement()
         {
             CountSpawnElement = int.Parse(InputValueSpawn.text.Trim());
+            isDestroyGameObj = ToggleElement.isOn;
         }
-
     }
 }

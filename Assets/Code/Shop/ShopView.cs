@@ -20,6 +20,7 @@ namespace Assets.Code.Shop
             {
                 Destroy(_allCreateElement[i].gameObject);
             }
+            _allCreateElement.Clear();
         }
 
         public void  CreateUIElement(ShopData[] AllSpawnElement)
@@ -30,7 +31,7 @@ namespace Assets.Code.Shop
                 for (int i = 0; i < AllSpawnElement.Length; i++)
                 {
                     BaseCellElement CellElement = Creator.CreateUICellElement(_prefabCellElement, _pointSpawnAllElement);
-                    InitializationData.InitCellElement(CellElement, AllSpawnElement[i]);
+                    InitializationData.InitCellElement(CellElement, AllSpawnElement[i], i);
                     _allCreateElement.Add(CellElement);
                 }
             }
@@ -53,7 +54,7 @@ namespace Assets.Code.Shop
                         Debug.LogError("Ошибка в создание данных!");
                         break;
                     }
-                    InitializationData.InitCellElement(_allCreateElement[i], AllSpawnElement[i]);
+                    InitializationData.InitCellElement(_allCreateElement[i], AllSpawnElement[i], i);
                 }
             }
             Debug.Log("AllSpawnElement: " +  _allCreateElement.Count);
