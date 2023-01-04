@@ -18,7 +18,7 @@ namespace Assets.Code.Test
         [ContextMenu("CreateElement")]
         public void CreateElement()
         {
-            Shop.GetServerData();
+            Shop.Create();
         }
 
         [ContextMenu("CreateElement")]

@@ -25,10 +25,11 @@ namespace Assets.Code.Shop
 
         public void  CreateUIElement(ShopData[] AllSpawnElement)
         {
+            int constCountIntValue = TestShop.CountSpawnElement;
             if (TestShop.isDestroyGameObj == true)
             {
                 RemoveAllElement();
-                for (int i = 0; i < AllSpawnElement.Length; i++)
+                for (int i = 0; i < constCountIntValue; i++)
                 {
                     BaseCellElement CellElement = Creator.CreateUICellElement(_prefabCellElement, _pointSpawnAllElement);
                     InitializationData.InitCellElement(CellElement, AllSpawnElement[i], i);
@@ -37,7 +38,7 @@ namespace Assets.Code.Shop
             }
             else if(TestShop.isDestroyGameObj == false)
             {
-                var DefficeElement = AllSpawnElement.Length - _allCreateElement.Count;
+                var DefficeElement = constCountIntValue - _allCreateElement.Count;
                 
                 if (DefficeElement > 0)
                 {
@@ -47,7 +48,7 @@ namespace Assets.Code.Shop
                     }
                 }
 
-                for (int i = 0; i < AllSpawnElement.Length; i++)
+                for (int i = 0; i < constCountIntValue; i++)
                 {
                     if (i == _allCreateElement.Count)
                     {

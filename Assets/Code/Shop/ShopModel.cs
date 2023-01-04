@@ -8,15 +8,14 @@ namespace Assets.Code.Shop
         [SerializeField] private ShopView _shopView;
         [SerializeField] private ShopData[] _shopData;
 
-        //private void Awake()
-        //{
-        //    GetServerData();
-        //}
+        private void Awake()
+        {
+            GetServerData();
+        }
 
         public void GetServerData()
         {
-            int constCountIntValue = TestShop.CountSpawnElement;
-            _shopData = new ShopData[constCountIntValue];
+            _shopData = new ShopData[10000];
 
             //Test
             for (int i = 0; i < _shopData.Length; i++)
@@ -26,11 +25,12 @@ namespace Assets.Code.Shop
                 _shopData[i].Price = 0;
             }
 
-            Create();
+          //  Create();
         }
 
         public void Create()
         {
+            int constCountIntValue = TestShop.CountSpawnElement;
             _shopView.CreateUIElement(_shopData);
         }
 
