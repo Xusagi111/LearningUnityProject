@@ -91,17 +91,18 @@ namespace StarterAssets
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
 
+        //TODO Disable ANimation;
         // animation IDs
-        private int _animIDSpeed;
-        private int _animIDGrounded;
-        private int _animIDJump;
-        private int _animIDFreeFall;
-        private int _animIDMotionSpeed;
+        //private int _animIDSpeed;
+        //private int _animIDGrounded;
+        //private int _animIDJump;
+        //private int _animIDFreeFall;
+        //private int _animIDMotionSpeed;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+       // private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
@@ -136,7 +137,7 @@ namespace StarterAssets
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
-            _hasAnimator = TryGetComponent(out _animator);
+            //_hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -154,7 +155,7 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
+           // _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
             GroundedCheck();
@@ -168,11 +169,11 @@ namespace StarterAssets
 
         private void AssignAnimationIDs()
         {
-            _animIDSpeed = Animator.StringToHash("Speed");
-            _animIDGrounded = Animator.StringToHash("Grounded");
-            _animIDJump = Animator.StringToHash("Jump");
-            _animIDFreeFall = Animator.StringToHash("FreeFall");
-            _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        //    _animIDSpeed = Animator.StringToHash("Speed");
+        //    _animIDGrounded = Animator.StringToHash("Grounded");
+        //    _animIDJump = Animator.StringToHash("Jump");
+        //    _animIDFreeFall = Animator.StringToHash("FreeFall");
+        //    _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
 
         private void GroundedCheck()
@@ -184,10 +185,10 @@ namespace StarterAssets
                 QueryTriggerInteraction.Ignore);
 
             // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDGrounded, Grounded);
-            }
+            //if (_hasAnimator)
+            //{
+            //    _animator.SetBool(_animIDGrounded, Grounded);
+            //}
         }
 
         private void CameraRotation()
@@ -272,11 +273,11 @@ namespace StarterAssets
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
             // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-            }
+            //if (_hasAnimator)
+            //{
+            //    _animator.SetFloat(_animIDSpeed, _animationBlend);
+            //    _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            //}
         }
 
         private void JumpAndGravity()
@@ -287,11 +288,11 @@ namespace StarterAssets
                 _fallTimeoutDelta = FallTimeout;
 
                 // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                }
+                //if (_hasAnimator)
+                //{
+                //    _animator.SetBool(_animIDJump, false);
+                //    _animator.SetBool(_animIDFreeFall, false);
+                //}
 
                 // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
@@ -306,10 +307,10 @@ namespace StarterAssets
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
                     // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDJump, true);
-                    }
+                    //if (_hasAnimator)
+                    //{
+                    //    _animator.SetBool(_animIDJump, true);
+                    //}
                 }
 
                 // jump timeout
@@ -331,10 +332,10 @@ namespace StarterAssets
                 else
                 {
                     // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDFreeFall, true);
-                    }
+                    //if (_hasAnimator)
+                    //{
+                    //    _animator.SetBool(_animIDFreeFall, true);
+                    //}
                 }
 
                 // if we are not grounded, do not jump

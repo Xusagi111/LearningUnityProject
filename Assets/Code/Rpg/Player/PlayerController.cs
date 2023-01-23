@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] private ParticleSystem _particleAttackPlayer { get; set; }
     [field: SerializeField] private float _distanseAttack { get; set; } = 5f;
     //Так же добавить воспроизведение анимации игрока при атаке.
-
-    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(this.gameObject.transform.position, _distanseAttack);
+    }
 
     private void Update()
     {
@@ -23,4 +26,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
             Debug.Log("Pressed middle click.");
     }
+
+    private void AttackPlayer()
+    {
+
+   //Будет замахиваться для удара, и аттакавать.
+    }
+
 }
